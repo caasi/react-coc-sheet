@@ -1,11 +1,14 @@
 React = require 'react'
-{div} = React.DOM
+{ Component, PropTypes, { div }:DOM } = React
 
-App = React.createClass do
-  displayName: 'React.App'
-  getInitialState: ->
+class App extends Component
+  @propTypes =
+    color: PropTypes.string
+  @defaultProps =
     color: \red
-  render: ->
+  (@props) ->
+    @state = color: @props.color
+  render: ~>
     div do
       className: \app
       style:
