@@ -1,21 +1,29 @@
 require! {
-  'path'
-  'nib'
-  'webpack'
+  path
+  nib
+  webpack
   'webpack-dev-server': WebpackDevServer
   'gulp'
   'gulp-util': gutil
   'gulp-livescript': livescript
   'gulp-stylus': stylus
   'gulp-jade': jade
+  './configs/dev.webpack.config': dev-config
+  './configs/webpack.config': config
 }
 
 # http://stackoverflow.com/questions/7697038/more-than-10-lines-in-a-node-js-stack-error
-#Error.stackTraceLimit = Infinity
+Error.stackTraceLimit = Infinity
 
 options =
   src:   path.resolve './src'
-  build:  path.resolve '.'
+  build: path.resolve '.'
+
+gulp.task \html ->
+  gulp
+    .src "#{options.src}/*.jade"
+    .pipe jade!
+    .pipe gulp.dest options.build
 
 gulp.task \js ->
   gulp
@@ -29,46 +37,32 @@ gulp.task \css ->
     .pipe stylus use: [nib!]
     .pipe gulp.dest options.build
 
-gulp.task \compile <[js css]>
+gulp.task \compile <[html js css]>
 
-gulp.task \webpack <[compile]> ->
+gulp.task \hot <[compile]> ->
   port = 8080
   host = 'localhost'
-  config =
-    entry:
-      * "webpack-dev-server/client?http://#host:#port"
-      * 'webpack/hot/dev-server'
-      * '.'
-    output:
-      path: __dirname # required for webpack-dev-server
-      filename: 'bundle.js'
-      publicPath: '/'
-    plugins:
-      * new webpack.HotModuleReplacementPlugin
-      ...
-    module:
-      loaders:
-        * test: /\.css$/ loader: \style!css
-        * test: /\.js$/  loader: \react-hot
-        ...
+  dev-config.entry.0 = "webpack-dev-server/client?http://#host:#port"
   server = new WebpackDevServer do
-    webpack config
-    publicPath: config.output.publicPath
+    webpack dev-config
+    publicPath: dev-config.output.publicPath
     hot: true
   server.listen port, host, (err) ->
     throw gutil.PluginError '[webpack-dev-server]', err if err
-    gutil.log "Listening at #host:#port"
+    gutil.log '[webpack]', "listening at #host:#port"
 
-gulp.task \html ->
-  gulp
-    .src "#{options.src}/*.jade"
-    .pipe jade!
-    .pipe gulp.dest options.build
+gulp.task \build <[compile]> (done) ->
+  webpack do
+    config
+    (err, stats) ->
+      throw gutil.PluginError '[webpack]', err if err
+      #gutil.log stats
+      done!
 
-gulp.task \watch <[html webpack]> ->
+gulp.task \watch <[hot]> ->
   gulp
-    ..watch "#{options.src}/**/*.ls"    <[compile]>
-    ..watch "#{options.src}/**/*.styl"  <[compile]>
-    #..watch "#{options.src}/*.jade"     <[html]>
+    ..watch "#{options.src}/**/*.ls"   <[compile]>
+    ..watch "#{options.src}/**/*.styl" <[compile]>
+    ..watch "#{options.src}/*.jade"    <[compile]>
 
 gulp.task \default <[watch]>

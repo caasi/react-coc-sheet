@@ -2,11 +2,18 @@
 
 This project is an application skeleton for anyone who loves Jade, Stylus, LiveScript and React.
 
-## Usage
+## Develop
 
 ```bash
 npm install
 npm start
+```
+
+## Build
+
+```bash
+npm install
+npm run build
 ```
 
 ## Layout
@@ -14,7 +21,7 @@ npm start
 ```
 # all of the sources
 src/
-  app/
+  lib/
     *.ls
     *.styl
   index.ls
@@ -22,10 +29,10 @@ src/
 
 # all of the files which are created and watched by gulp
 # so you can host them with gh-pages
-dist/
-  **/*.css
+lib/
   **/*.js
-  index.js
+  **/*.css
+index.js
 bundle.js
 index.html
 ```
