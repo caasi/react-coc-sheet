@@ -1,7 +1,7 @@
 {
-  "name": "seed",
-  "version": "0.0.6",
-  "description": "the seed for Jade, Stylus, LiveScript and React apps",
+  "name": "react-coc-sheet",
+  "version": "0.0.1",
+  "description": "Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn.",
   "main": "index.js",
   "scripts": {
     "start": "gulp",

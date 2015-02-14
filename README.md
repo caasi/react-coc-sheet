@@ -1,38 +1,5 @@
-# seed -- the seed for Jade, Stylus, LiveScript and React apps
+# Interactive Call of Cthulhu 7 Character Sheet
 
-This project is an application skeleton for anyone who loves Jade, Stylus, LiveScript and React.
+> The most merciful thing in the world, I think, is the inability of the human mind to correlate all its contents. We live on a placid island of ignorance in the midst of black seas of infinity, and it was not meant that we should voyage far.
 
-## Develop
-
-```bash
-npm install
-npm start
-```
-
-## Build
-
-```bash
-npm install
-npm run build
-```
-
-## Layout
-
-```
-# all of the sources
-src/
-  lib/
-    *.ls
-    *.styl
-  index.ls
-  index.jade
-
-# all of the files which are created and watched by gulp
-# so you can host them with gh-pages
-lib/
-  **/*.js
-  **/*.css
-index.js
-bundle.js
-index.html
-```
+-- H. P. Lovecraft, the Call of Cthulhu
