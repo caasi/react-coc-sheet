@@ -1,23 +1,12 @@
-React = require 'react'
-{ Component, PropTypes, { div }:DOM } = React
+require! {
+  react: { Component, PropTypes, { div }:DOM }:React
+}
+
+Characteristics = React.createFactory require './Characteristics'
 
 class App extends Component
-  @propTypes =
-    color: PropTypes.string
-  @defaultProps =
-    color: \red
   (@props) ->
-    @state = color: @props.color
   render: ~>
-    div do
-      className: \app
-      style:
-        background: @state.color
-      onClick: ~>
-        @setState color:
-          if @state.color is \red
-            then \green
-            else \red
-      'click me'
+    Characteristics!
 
 module.exports = App

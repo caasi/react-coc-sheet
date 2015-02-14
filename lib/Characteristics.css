@@ -1,3 +1,42 @@
 .characteristic {
-  border: 0.2rem solid #000;
+  position: relative;
+  width: 8rem;
+  height: 4.2rem;
+  border: 0.2rem solid #666;
+  border-top-right-radius: 1rem;
+}
+.characteristic .regular,
+.characteristic .hard,
+.characteristic .extreme {
+  position: absolute;
+  text-align: center;
+}
+.characteristic .regular {
+  top: 0;
+  left: 0;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-right: 0.2rem solid #666;
+  line-height: 4rem;
+  font-size: 2rem;
+}
+.characteristic .hard {
+  top: 0;
+  left: 4.4rem;
+  width: 3.6rem;
+  height: 2rem;
+  border-bottom: 0.2rem solid #666;
+  line-height: 2rem;
+  font-size: 1rem;
+}
+.characteristic .extreme {
+  top: 2.2rem;
+  left: 4.4rem;
+  width: 3.6rem;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 1rem;
+}
+.characteristics .title {
+  font-size: 2rem;
 }
