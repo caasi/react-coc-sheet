@@ -5,14 +5,17 @@ require! {
 
 class Characteristic extends Component
   @defaultProps =
+    title: \???
     extreme: 10
-  (@props) ->
   render: ->
-    { extreme } = @props
+    { title, extreme } = @props
     regular = extreme * 5
     hard    = Math.ceil regular / 2
     div do
       className: cx \coc-sheet \characteristic
+      div do
+        className: \title
+        title
       div do
         className: \regular
         regular

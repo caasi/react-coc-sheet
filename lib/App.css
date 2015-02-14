@@ -103,13 +103,16 @@ body {
   border: 0.2rem solid #666;
   border-top-right-radius: 1rem;
 }
-.characteristic .regular,
-.characteristic .hard,
-.characteristic .extreme {
+.characteristic > .title {
+  font-size: 0.5rem;
+}
+.characteristic > .regular,
+.characteristic > .hard,
+.characteristic > .extreme {
   position: absolute;
   text-align: center;
 }
-.characteristic .regular {
+.characteristic > .regular {
   top: 0;
   left: 0;
   width: 4.2rem;
@@ -118,7 +121,7 @@ body {
   line-height: 4rem;
   font-size: 2rem;
 }
-.characteristic .hard {
+.characteristic > .hard {
   top: 0;
   left: 4.4rem;
   width: 3.6rem;
@@ -127,7 +130,7 @@ body {
   line-height: 2rem;
   font-size: 1rem;
 }
-.characteristic .extreme {
+.characteristic > .extreme {
   top: 2.2rem;
   left: 4.4rem;
   width: 3.6rem;
@@ -135,7 +138,7 @@ body {
   line-height: 2rem;
   font-size: 1rem;
 }
-.characteristics .title {
+.characteristics > .title {
   font-size: 2rem;
 }
 .app {
