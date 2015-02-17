@@ -30,6 +30,7 @@ APP = React.createFactory APP
 EDU = React.createFactory EDU
 SIZ = React.createFactory SIZ
 INT = React.createFactory INT
+MoveRate = React.createFactory require './MoveRate'
 
 class Characteristics extends Component
   @defaultProps =
@@ -41,10 +42,16 @@ class Characteristics extends Component
     edu: 10
     siz: 10
     int: 10
+    luck: 10
+    damage-bonus: 0
+    build: 0
     notify: ->
   (@props) ->
   render: ~>
-    { str, con, pow, dex, app, edu, siz, int } = @props
+    { str, con, pow, dex, app, edu, siz, int, luck, damage-bonus, build } = @props
+    san = pow * 5
+    mp = pow
+    hp = Math.floor((siz + con) / 10)
     div do
       className: cx \coc-sheet \characteristics
       span do
@@ -62,6 +69,16 @@ class Characteristics extends Component
       EDU extreme: edu
       SIZ extreme: siz
       INT extreme: int
-      #MoveRate!
+      MoveRate { str, dex, siz }
+      div do
+        className: \damage-bonus
+        "Damage Bonus: #damage-bonus"
+      div do
+        className: \build
+        "Build: #build"
+      div do
+        className: \luck
+        "Luck: #luck"
+
 
 module.exports = Characteristics
