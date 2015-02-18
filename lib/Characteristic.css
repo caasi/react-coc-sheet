@@ -6,8 +6,11 @@
   border-top-right-radius: 1rem;
 }
 .characteristic > .title {
+  top: 0.1rem;
+  left: 0.1rem;
   font-size: 0.5rem;
 }
+.characteristic > .title,
 .characteristic > .regular,
 .characteristic > .hard,
 .characteristic > .extreme {

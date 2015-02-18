@@ -58,6 +58,7 @@ class Characteristics extends Component
         className: \title
         \Characteristics
       button do
+        className: \roll
         onClick: ~> @props.notify action: \roll-characteristics
         \roll
       #Characteristic extreme: str
