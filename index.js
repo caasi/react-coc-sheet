@@ -15,9 +15,9 @@
     case !(85 <= value && value < 125):
       return 0;
     case !(125 <= value && value < 165):
-      return droll.roll('1d4').total;
+      return "+1D4";
     case !(165 <= value && value < 205):
-      return droll.roll('1d6').total;
+      return "+1D6";
     default:
       return NaN;
     }
